@@ -1,53 +1,39 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Noshi Toshi app colors – from logo palette
+ * Red, golden, cream, dark brown, green accents
  */
 
-import { Platform } from 'react-native';
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
 export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
-};
+  /** Dominant red – header, accents, buttons */
+  red: '#D93B32',
+  /** Golden yellow – borders, highlights, subtitle */
+  golden: '#FDCF6E',
+  /** Darker orange – bowl rim, secondary accent */
+  orange: '#E48F45',
+  /** Cream / off-white – backgrounds, main text on dark */
+  cream: '#FFF9EB',
+  /** Dark red-brown – body text, outlines */
+  darkBrown: '#6B2B28',
+  /** Green – fresh accents (herbs, success) */
+  green: '#57A64C',
+  greenLight: '#71B96B',
+  /** Pink/shrimp – soft accent */
+  pink: '#F39B88',
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-  },
-});
+  /** Screen background (warm cream) */
+  background: '#FFF9EB',
+  /** Card/surface */
+  card: '#FFFFFF',
+  /** Header background */
+  headerBg: '#D93B32',
+  /** Text on red header */
+  headerText: '#FFF9EB',
+  /** Body text */
+  text: '#6B2B28',
+  /** Muted text */
+  textMuted: '#8B4542',
+  /** Section titles, links */
+  accent: '#D93B32',
+  /** Step numbers, highlights */
+  accentGolden: '#E48F45',
+};
