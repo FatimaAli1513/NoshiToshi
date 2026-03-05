@@ -1,41 +1,125 @@
 # NoshiToshi
-Chinese dish made in pakistan
+
+**Chinese food, Pakistani style.**  
+A recipe app for Chinese–Pakistani dishes (چائنیز · پاکستانی ترکیبیں).
 
 ---
 
-React Native Expo app.
+## Features
+
+- **10 recipes** – Chicken Chow Mein, Chicken Manchurian, Chinese Fried Rice, Sweet & Sour Chicken, Hakka Noodles, Chicken Corn Soup, Hot & Sour Soup, Vegetable Spring Rolls, Szechuan Chicken, Honey Garlic Chicken
+- **Recipe detail** – Full ingredients list and step-by-step method for each dish
+- **Two languages** – English (default) and اردو (Urdu) with correct RTL layout
+- **Language picker** – Globe icon in the header opens a modal to switch between English (🇺🇸) and Urdu (🇵🇰)
+- **RTL support** – When Urdu is selected, entire app (home + recipe screens) switches to right-to-left layout and Urdu recipe names, ingredients, and method
+- **Offline** – All content and images are bundled; no sign-in or server required
+- **Theme** – Dark brown header, cream background, golden accents (aligned with NoshiToshi branding)
+
+---
+
+## Tech
+
+- **React Native** (Expo SDK 54), **Expo Router** (file-based routing)
+- **TypeScript**, **Yarn**
+- **Platforms:** Android, iOS, Web
+
+---
 
 ## Get started
 
-1. Install dependencies (yarn use karein; agar parent folder mein Yarn workspace ho to `npm install` use karein)
+1. **Install dependencies**  
+   (If the repo is inside a parent Yarn workspace and install fails, use `npm install` instead.)
 
    ```bash
    yarn install
    ```
 
-2. Start the app
+2. **Run the app**
 
    ```bash
    yarn start
    ```
 
-In the output, you'll find options to open the app in a
+   Then choose: **Android** / **iOS** / **Web** from the Expo dev tools.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go)
+### Scripts
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| Command        | Description        |
+|----------------|--------------------|
+| `yarn start`   | Start Expo dev server |
+| `yarn android` | Run on Android     |
+| `yarn ios`     | Run on iOS        |
+| `yarn web`     | Run in browser    |
+| `yarn lint`    | Run ESLint        |
 
-## Scripts
+### Build (Android release)
 
-- `yarn start` – start Expo
-- `yarn android` – run on Android
-- `yarn ios` – run on iOS
-- `yarn web` – run on web
+- Keystore and credentials are in the project root (`noshitoshi-release.keystore`, `keystore-credentials.txt`).
+- Use them in `android/app/build.gradle` (or EAS Build) for release signing.
+
+---
+
+## Play Store / App Store – Common questions
+
+Use this section when filling store listings and policy forms.
+
+### App identity
+
+| Question / Field   | Answer |
+|--------------------|--------|
+| **App name**       | NoshiToshi |
+| **Short description** | Chinese–Pakistani recipe app. Cook at home with step-by-step recipes in English and Urdu. |
+| **Category**        | Food & Drink |
+| **Package name (Android)** | com.anonymous.NoshiToshi |
+
+### Content & audience
+
+| Question | Answer |
+|----------|--------|
+| **Target audience / age group** | Everyone; no age restriction. Content is cooking recipes only. |
+| **Content rating** | Suitable for all ages (no violence, no mature content, no gambling). |
+| **Does the app contain ads?** | No. |
+| **Does the app offer in-app purchases or subscriptions?** | No. |
+| **Does the app contain user-generated content?** | No. All recipes and text are static and bundled in the app. |
+
+### Privacy & data
+
+| Question | Answer |
+|----------|--------|
+| **Does the app collect any user data?** | No. No sign-in, no accounts, no analytics, no personal data collection. |
+| **Does the app share user data with third parties?** | No. |
+| **Does the app use location?** | No. |
+| **Does the app access contacts, photos, or other sensitive data?** | No. |
+| **Privacy policy required?** | You still need a privacy policy URL for the store. You can state: “NoshiToshi does not collect, store, or share any personal or usage data.” |
+
+### Permissions
+
+| Question | Answer |
+|----------|--------|
+| **What permissions does the app use?** | No special permissions required for core use. The app works offline with bundled assets. (If you add features like sharing or camera later, list only those.) |
+
+### Functionality
+
+| Question | Answer |
+|----------|--------|
+| **Does the app work offline?** | Yes. All recipes, images, and text are included in the app. |
+| **Languages supported** | English, Urdu (with RTL). |
+| **Required device capabilities** | Standard smartphone; no special hardware. |
+
+---
+
+## Project structure (overview)
+
+- `app/` – Screens (Expo Router): `index.tsx` (home), `recipe/[id].tsx` (recipe detail)
+- `assets/images/` – App icon, splash, recipe images (see `assets/images/index.ts`)
+- `constants/theme.ts` – Colors (dark brown, cream, golden, etc.)
+- `context/LocaleContext.tsx` – Language state (en / ur)
+- `data/recipes.ts` – Recipe list (id, name, ingredients, steps)
+- `locale/translations.ts` – English and Urdu strings (UI + recipe names, ingredients, steps)
+
+---
 
 ## Learn more
 
 - [Expo documentation](https://docs.expo.dev/)
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
