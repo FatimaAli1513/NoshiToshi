@@ -11,9 +11,13 @@ export const Images = {
   cornSoup: require('./chicken_corn_soup.webp'),
   friedRice: require('./chicken-fried-rice.jpeg'),
   hakkaNoodles: require('./hakkaNoodles.jpeg'),
-  sweetSourChicken: require('./sweetSourSoup.jpeg'),
+  sweetSourChicken: require('./SweetSourChicken.png'),
   chickenChowMein: require('./chowmin.jpg'),
   chickenManchurian: require('./manchurian.jpg'),
+  sweetSourSoup: require('./sweetSourSoup.jpeg'),
+  springRolls: require('./springRoll.jpg'),
+  szechuanChicken: require('./szechuanChicken.jpg'),
+  honeyGarlicChicken: require('./honey-garlic-chicken.jpg'),
 } as const;
 
 export type ImageKey = keyof typeof Images;
@@ -26,4 +30,8 @@ export const RECIPE_IMAGES: Record<string, (typeof Images)[ImageKey]> = {
   'sweet-sour-chicken': Images.sweetSourChicken,
   'hakka-noodles': Images.hakkaNoodles,
   'chicken-corn-soup': Images.cornSoup,
+  'hot-sour-soup': Images.sweetSourSoup,
+  'spring-rolls': Images.springRolls,
+  'szechuan-chicken': Images.szechuanChicken,
+  'honey-garlic-chicken': Images.honeyGarlicChicken,
 };
