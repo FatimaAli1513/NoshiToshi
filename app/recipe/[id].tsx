@@ -2,12 +2,12 @@ import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import {
+  Platform,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View,
-  Pressable,
-  Platform,
 } from 'react-native';
 
 import { Images } from '@/assets/images';
@@ -40,7 +40,8 @@ export default function RecipeScreen() {
           hitSlop={12}
           android_ripple={{ color: 'rgba(255,249,235,0.3)' }}
         >
-          <Text style={styles.backButtonText}>← Back</Text>
+          <Image source={Images.backButtonIcon} style={styles.backButtonIcon} contentFit="contain" />
+          <Text style={styles.backButtonText}> Back</Text>
         </Pressable>
       </View>
       <ScrollView
@@ -97,9 +98,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: Colors.orange,
   },
+  backButtonIcon: {
+    width: 20,
+    height: 20,
+    tintColor: Colors.headerText,
+  },
   backButton: {
     paddingVertical: 8,
     paddingRight: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
   },
   backButtonText: {
     fontSize: 17,
