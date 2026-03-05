@@ -4,7 +4,7 @@
  */
 
 export const Colors = {
-  /** Dominant red – header, accents, buttons */
+  /** Red (optional – use darkBrown instead) */
   red: '#D93B32',
   /** Golden yellow – borders, highlights, subtitle */
   golden: '#FDCF6E',
@@ -25,15 +25,15 @@ export const Colors = {
   /** Card/surface */
   card: '#FFFFFF',
   /** Header background */
-  headerBg: '#D93B32',
-  /** Text on red header */
+  headerBg: '#6B2B28',
+  /** Text on header */
   headerText: '#FFF9EB',
   /** Body text */
   text: '#6B2B28',
   /** Muted text */
   textMuted: '#8B4542',
   /** Section titles, links */
-  accent: '#D93B32',
+  accent: '#6B2B28',
   /** Step numbers, highlights */
   accentGolden: '#E48F45',
 };

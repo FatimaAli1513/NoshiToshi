@@ -12,36 +12,41 @@ import {
 
 import { Images, RECIPE_IMAGES } from '@/assets/images';
 import { Colors } from '@/constants/theme';
+import { useLocale } from '@/context/LocaleContext';
 import { recipes } from '@/data/recipes';
 
 export default function RecipeScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const { t, locale } = useLocale();
 
   const recipe = useMemo(() => recipes.find((r) => r.id === id), [id]);
+  const isRtl = locale === 'ur';
+  const ingredients = !recipe ? [] : (isRtl && t.recipeDetails?.[recipe.id] ? t.recipeDetails[recipe.id].ingredients : recipe.ingredients);
+  const steps = !recipe ? [] : (isRtl && t.recipeDetails?.[recipe.id] ? t.recipeDetails[recipe.id].steps : recipe.steps);
 
   if (!recipe) {
     return (
-      <View style={styles.centered}>
-        <Text style={styles.errorText}>Recipe not found</Text>
+      <View style={[styles.centered, isRtl && rtlStyles.container]}>
+        <Text style={styles.errorText}>{t.recipeNotFound}</Text>
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
-          <Text style={styles.backBtnText}>Go back</Text>
+          <Text style={styles.backBtnText}>{t.goBack}</Text>
         </Pressable>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <View style={[styles.container, isRtl && rtlStyles.container]}>
+      <View style={[styles.header, isRtl && rtlStyles.header]}>
         <Pressable
           onPress={() => router.back()}
-          style={styles.backButton}
+          style={[styles.backButton, isRtl && rtlStyles.backButton]}
           hitSlop={12}
           android_ripple={{ color: 'rgba(255,249,235,0.3)' }}
         >
-          <Image source={Images.backButtonIcon} style={styles.backButtonIcon} contentFit="contain" />
-          <Text style={styles.backButtonText}> Back</Text>
+          <Image source={Images.backButtonIcon} style={[styles.backButtonIcon, isRtl && rtlStyles.backButtonIcon]} contentFit="contain" />
+          <Text style={styles.backButtonText}>{t.back}</Text>
         </Pressable>
       </View>
       <ScrollView
@@ -51,25 +56,25 @@ export default function RecipeScreen() {
       >
         <Image
           source={RECIPE_IMAGES[recipe.id] ?? Images.icon}
-          style={styles.heroImage}
+          style={[styles.heroImage]}
           contentFit="cover"
         />
-        <View style={styles.body}>
-          <Text style={styles.title}>{recipe.name}</Text>
+        <View style={[styles.body, isRtl && rtlStyles.body]}>
+          <Text style={styles.title}>{t.recipeNames[recipe.id] ?? recipe.name}</Text>
 
-          <Text style={styles.sectionTitle}>Ingredients</Text>
+          <Text style={styles.sectionTitle}>{t.ingredients}</Text>
           <View style={styles.list}>
-            {recipe.ingredients.map((line, i) => (
+            {ingredients.map((line, i) => (
               <Text key={i} style={styles.bullet}>
                 • {line}
               </Text>
             ))}
           </View>
 
-          <Text style={styles.sectionTitle}>Method</Text>
+          <Text style={styles.sectionTitle}>{t.method}</Text>
           <View style={styles.steps}>
-            {recipe.steps.map((step, i) => (
-              <View key={i} style={styles.stepRow}>
+            {steps.map((step, i) => (
+              <View key={i} style={[styles.stepRow, isRtl && rtlStyles.stepRow]}>
                 <View style={styles.stepNum}>
                   <Text style={styles.stepNumText}>{i + 1}</Text>
                 </View>
@@ -82,6 +87,15 @@ export default function RecipeScreen() {
     </View>
   );
 }
+
+const rtlStyles = StyleSheet.create({
+  container: { direction: 'rtl' as const },
+  header: { flexDirection: 'row-reverse' },
+  backButton: { paddingRight: 0, paddingLeft: 12 },
+  backButtonIcon: { transform: [{ scaleX: -1 }] },
+  body: { direction: 'rtl' as const },
+  stepRow: {},
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -136,6 +150,7 @@ const styles = StyleSheet.create({
     color: Colors.text,
     marginBottom: 24,
     lineHeight: 30,
+    textAlign: 'left'
   },
   sectionTitle: {
     fontSize: 16,
@@ -144,6 +159,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
+    textAlign: 'left'
   },
   list: {
     marginBottom: 24,
@@ -166,7 +182,7 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: Colors.red,
+    backgroundColor: Colors.darkBrown,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -192,15 +208,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.textMuted,
     marginBottom: 16,
+    textAlign: 'left'
   },
   backBtn: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: Colors.red,
+    backgroundColor: Colors.darkBrown,
     borderRadius: 10,
   },
   backBtnText: {
     color: Colors.cream,
     fontWeight: '600',
+    textAlign: 'left'
   },
 });

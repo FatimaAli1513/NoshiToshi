@@ -1,3 +1,4 @@
+import { LocaleProvider } from '@/context/LocaleContext';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { LogBox } from 'react-native';
@@ -12,12 +13,12 @@ LogBox.ignoreLogs([
 
 export default function RootLayout() {
   return (
-    <>
+    <LocaleProvider>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="recipe/[id]" />
       </Stack>
       <StatusBar style="light" />
-    </>
+    </LocaleProvider>
   );
 }
