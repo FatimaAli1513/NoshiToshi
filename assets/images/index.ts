@@ -17,3 +17,13 @@ export const Images = {
 } as const;
 
 export type ImageKey = keyof typeof Images;
+
+/** Recipe id → image for cards and recipe detail */
+export const RECIPE_IMAGES: Record<string, (typeof Images)[ImageKey]> = {
+  'chicken-chow-mein': Images.chickenChowMein,
+  'chicken-manchurian': Images.chickenManchurian,
+  'fried-rice': Images.friedRice,
+  'sweet-sour-chicken': Images.sweetSourChicken,
+  'hakka-noodles': Images.hakkaNoodles,
+  'chicken-corn-soup': Images.cornSoup,
+};

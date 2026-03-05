@@ -10,7 +10,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import { Images } from '@/assets/images';
+import { Images, RECIPE_IMAGES } from '@/assets/images';
 import { Colors } from '@/constants/theme';
 import { recipes } from '@/data/recipes';
 
@@ -37,7 +37,7 @@ export default function HomeScreen() {
         android_ripple={{ color: 'rgba(219,59,50,0.2)' }}
       >
         <Image
-          source={Images.icon}
+          source={RECIPE_IMAGES[item.id] ?? Images.icon}
           style={[styles.cardImage, { height: cardSize }]}
           contentFit="cover"
         />

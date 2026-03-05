@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-import { Images } from '@/assets/images';
+import { Images, RECIPE_IMAGES } from '@/assets/images';
 import { Colors } from '@/constants/theme';
 import { recipes } from '@/data/recipes';
 
@@ -50,7 +50,7 @@ export default function RecipeScreen() {
         showsVerticalScrollIndicator={false}
       >
         <Image
-          source={Images.icon}
+          source={RECIPE_IMAGES[recipe.id] ?? Images.icon}
           style={styles.heroImage}
           contentFit="cover"
         />
