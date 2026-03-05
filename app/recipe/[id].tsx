@@ -90,10 +90,11 @@ export default function RecipeScreen() {
 
 const rtlStyles = StyleSheet.create({
   container: { direction: 'rtl' as const },
-  header: { flexDirection: 'row-reverse' },
-  backButton: { paddingRight: 0, paddingLeft: 12 },
+  header: { flexDirection: 'row', justifyContent: 'flex-start' },
+  backButton: { flexDirection: 'row', paddingRight: 12, paddingLeft: 0 },
   backButtonIcon: { transform: [{ scaleX: -1 }] },
   body: { direction: 'rtl' as const },
+  text: { textAlign: 'right', writingDirection: 'rtl' as const },
   stepRow: {},
 });
 
