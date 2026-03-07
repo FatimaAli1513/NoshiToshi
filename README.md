@@ -25,6 +25,20 @@ A recipe app for Chinese–Pakistani dishes (چائنیز · پاکستانی ت
 
 ---
 
+## Privacy
+
+NoshiToshi is designed with privacy in mind:
+
+- **No data collection** – The app does not collect, store, or transmit any personal data, usage data, or analytics.
+- **No sign-in or accounts** – You can use the app without creating an account or providing any information.
+- **No third-party sharing** – We do not share any data with third parties because we do not collect any.
+- **Offline-first** – All recipes, images, and text are bundled in the app. No server calls are made for core functionality.
+- **No sensitive permissions** – The app does not access location, contacts, photos, or other sensitive device data.
+
+If you need a privacy policy URL for app store listings, you can host a short policy stating: *"NoshiToshi does not collect, store, or share any personal or usage data."*
+
+---
+
 ## Get started
 
 1. **Install dependencies**  
